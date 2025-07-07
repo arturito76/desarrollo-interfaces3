@@ -1,0 +1,33 @@
+#carouselExample {
+  max-width: 100%;
+  margin: 1px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#carouselExample img {
+  object-fit: cover;
+  height: 670px;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  #carouselExample img {
+    height: 250px;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

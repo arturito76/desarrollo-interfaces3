@@ -1,0 +1,105 @@
+
+ /* --------- ESTRUCTURA GENERAL --------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.titulo h1 {
+  font-size: 48px;
+  color: #2f4f4f;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.subtitulo h1 {
+  font-size: 24px;
+  color: #6b8e23;
+  text-align: center;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* --------- CONTENEDOR PRINCIPAL --------- */
+.img-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  box-shadow: rgb(127, 115, 161) 30px 30px 60px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 25px;
+  
+}
+
+.img-rose {
+  width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+  max-width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: white;
+  text-align: justify;
+  padding: 10px;
+  border-left: 8px solid #999;
+  background-color: rgb(105, 105, 95);
+  border-radius: 15px;
+}
+
+/* --------- OFERTA --------- */
+.img-oferta {
+  width: 100%;
+  max-width: 1146px;
+  margin: 30px auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 10px 20px 20px rgba(15, 2, 2, 0.1);
+}
+
+
+
+
+/* --------- RESPONSIVE: MOVILES --------- */
+@media (max-width: 768px) {
+  .titulo h1 {
+    font-size: 32px;
+  }
+
+  .subtitulo h1 {
+    font-size: 18px;
+  }
+
+  .img-description {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .img-rose {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .img-oferta {
+    width: 100%;
+    height: auto;
+  }
+}

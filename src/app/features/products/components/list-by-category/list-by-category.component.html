@@ -1,0 +1,34 @@
+<h1 class="text-center my-4">Productos por Categoría</h1>
+
+<ul class="listas">
+  <li *ngFor="let categoria of productosPorCategoria | keyvalue" class="categoria-titulo" (click)="abrirModalPorCategoria(categoria.key)">
+    {{ categoria.key }}
+  </li>
+</ul>
+
+<!-- Modal -->
+<div class="modal fade" id="modalActualizar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title">Productos de Categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let producto of productosSeleccionados">
+            <div class="card h-100 shadow-sm">
+              <img [src]="producto.image || 'https://via.placeholder.com/150'" class="card-img-top" alt="{{ producto.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ producto.name }}</h5>
+                <h6 class="card-subtitle text-muted">S/. {{ producto.price }}</h6>
+                <p class="card-text">{{ producto.description }}</p>
+                <p><strong>TemporadaFructificación:</strong> {{ producto.brand }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

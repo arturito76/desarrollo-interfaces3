@@ -1,0 +1,22 @@
+<h1 class="titulo-productos"> Productos arturito  </h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let producto of productos.slice(0,3)">
+    <div class="card producto-card h-100">
+      <img [src]="producto.image" class="card-img-top" alt="Imagen de {{ producto.name }}" *ngIf="producto.image; else sinImagen">
+      <ng-template #sinImagen>
+        <img  src="https://via.placeholder.com/150" class="card-img-top" alt="Sin imagen" />
+      </ng-template>
+      
+      <div class="card-body">
+
+        
+        <!-- interpolamos -->
+        <h5 class="card-title">{{ producto.name }}</h5> 
+        <h6 class="card-subtitle mb-2 text-muted">S/. {{ producto.price }}</h6>
+        <p class="card-text">{{ producto.description }}</p>
+        <p class="card-text"><strong>Marca:</strong> {{ producto.brand }}</p>
+        <button class="tbn-vermas" [routerLink]="['/products']">ver más..</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<div class="mb-3">
+  <form class="formulario" [formGroup]="formProducto" (ngSubmit)="guardarProducto()">
+    <div class="contenedor-columnas">
+
+      <!-- Columna izquierda -->
+      <div class="columna">
+        <div>
+          <label class="label1" for="name">Nombre:</label>
+          <input class="input1" id="name" type="text" formControlName="name" />
+          <div *ngIf="formProducto.get('name')?.invalid && formProducto.get('name')?.touched">
+            <small style="color: rgb(204, 82, 82);">El nombre es obligatorio.</small>
+          </div>
+        </div>
+
+        <div>
+          <label class="label1" for="price">Precio:</label>
+          <input class="input1" id="price" type="number" formControlName="price" />
+          <div *ngIf="formProducto.get('price')?.invalid && formProducto.get('price')?.touched">
+            <small style="color: red;">Precio válido requerido.</small>
+          </div>
+        </div>
+
+        <div>
+          <label class="label1" for="category">Categoría:</label>
+          <input class="input1" id="category" type="text" formControlName="category" />
+        </div>
+
+        <div>
+          <label class="label1" for="description">Descripción:</label>
+          <input class="input1" id="description" type="text" formControlName="description" />
+        </div>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="columna">
+        <div>
+          <label class="label2" for="stock">Stock:</label>
+          <input class="input2" id="stock" type="number" formControlName="stock" />
+          <div *ngIf="formProducto.get('stock')?.invalid && formProducto.get('stock')?.touched">
+            <small style="color: red;">Stock válido requerido.</small>
+          </div>
+        </div>
+
+        <div>
+          <label class="label2" for="brand">TemporadaFructificación:</label>
+          <input class="input2" id="brand" type="text" formControlName="brand" />
+        </div>
+
+        <div>
+          <label class="label2" for="image">Imagen:</label>
+          <input class="input2" id="image" type="text" formControlName="image" />
+        </div>
+      </div>
+
+      <div>
+        <img class="img-form" src="https://images.pexels.com/photos/3680939/pexels-photo-3680939.jpeg" >
+      </div>
+
+    </div>
+
+    <div style="margin-top: 30px;">
+      <button type="submit" [disabled]="formProducto.invalid">Guardar</button>
+    </div>
+  </form>
+</div>
+
+
+<h2>Lista de Productos</h2>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NOMBRE PRODUCTO</th>
+      <th scope="col">PRECIO</th>
+      <th scope="col">CATEGORÍA</th>
+      <th scope="col">DESCRIPCIÓN</th>
+      <th scope="col">STOCK</th>
+      <th scope="col">TIEMPOFRUCTIFICACIÓN</th>
+      <th scope="col">IMAGEN</th>
+      <th scope="col">OPERACIONES A REALIZAR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.name }}</td>
+      <td>{{ producto.price }}</td>
+      <td>{{ producto.category }}</td>
+      <td>{{ producto.description }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>{{ producto.brand }}</td>
+      <td>
+        <img [src]="producto.image" alt="imagen" width="80" height="80" *ngIf="producto.image">
+      </td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="eliminarproducto(producto.id)">Eliminar</button>
+        <button class="btn btn-primary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#modalActualizar"
+                (click)="abrirModalActualizar(producto.id)" >Actualizar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<!-- Modal para actualizar -->
+<div class="modal fade" id="modalActualizar" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <form [formGroup]="formActualizar" (ngSubmit)="guardarActualizacion()">
+        <div class="modal-header">
+          <h5 class="modal-title">Actualizar Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Aquí va tu formulario reactivo original -->
+          <div class="mb-3">
+            <label for="name">Nombre:</label>
+            <input id="name" type="text" formControlName="name" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="price">Precio:</label>
+            <input id="price" type="number" formControlName="price" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="category">Categoría:</label>
+            <input id="category" type="text" formControlName="category" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="description">Descripción:</label>
+            <input id="description" type="text" formControlName="description" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="stock">Stock:</label>
+            <input id="stock" type="number" formControlName="stock" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="brand">tiempofructicion:</label>
+            <input id="brand" type="text" formControlName="brand" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="image">Imagen (URL):</label>
+            <input id="image" type="text" formControlName="image" class="form-control" />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="formActualizar.invalid">Guardar Cambios</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

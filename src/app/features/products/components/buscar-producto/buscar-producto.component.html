@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>Resultados de búsqueda para: "{{ termino }}"</h2>
+
+  <div *ngIf="resultados.length > 0; else sinResultados">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let producto of resultados">
+        <div class="card h-100">
+          <img [src]="producto.image || 'https://via.placeholder.com/150'" class="card-img-top" alt="{{ producto.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ producto.name }}</h5>
+            <h6 class="card-subtitle text-muted">S/. {{ producto.price }}</h6>
+            <p class="card-text">{{ producto.description }}</p>
+            <p><strong>Marca:</strong> {{ producto.brand }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #sinResultados>
+    <div class="alert alert-warning mt-4">
+      No se encontraron productos que coincidan con "{{ termino }}"
+    </div>
+  </ng-template>
+</div>
